@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <style>
+          .center {
+
+            text-align: center;
+          }
+          .btn {
+                border: none; /* Remove borders */
+                color: white; /* Add a text color */
+                padding: 14px 28px; /* Add some padding */
+                cursor: pointer; /* Add a pointer cursor on mouse-over */
+                width: 30%;
+                height: 30%;
+          }
+          .default {background-color: rosybrown; color: black;} /* Gray */
+          .default:hover {background: #ddd;}
+
+      </style>
+  </head>
+
+  <body>
+  <div class="center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2">
+                <img src="{{ url_for('video_feed_Entrer') }}" width="100%">
+                <button class="btn default" onclick="document.location='index.html'">Pointage effectué</button>
+            </div>
+        </div>
+    </div>
+  </div>
+    </body>
+
+
+</html>
