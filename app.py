@@ -12,10 +12,7 @@ Zied_image = face_recognition.load_image_file("Images/Zied-Bachoual.jpg")
 Zied_face_encoding = face_recognition.face_encodings(Zied_image)[0]
 Oumayma_image = face_recognition.load_image_file("Images/Oumayma-Kouni.jpg")
 Oumayma_face_encoding = face_recognition.face_encodings(Oumayma_image)[0]
-Aziza_image = face_recognition.load_image_file("Images/Aziza-Jbeli.jpg")
-Aziza_face_encoding = face_recognition.face_encodings(Aziza_image)[0]
-Mahjoub_image = face_recognition.load_image_file("Images/Mahjoub-Kouni.jpg")
-Mahjoub_face_encoding = face_recognition.face_encodings(Mahjoub_image)[0]
+
 #Zied_image = face_recognition.load_image_file("Images/Zied-Bachoual'.jpg.")
 #Zied_face_encoding = face_recognition.face_encodings(Zied_image)[1]
 #Zied_image = face_recognition.load_image_file("Images/Zied_Bachoual.jpg")
@@ -24,14 +21,12 @@ Mahjoub_face_encoding = face_recognition.face_encodings(Mahjoub_image)[0]
 known_face_encodings = [
     Zied_face_encoding,
     Oumayma_face_encoding,
-    Aziza_face_encoding,
-    Mahjoub_face_encoding,
+
 ]
 known_face_names = [
     "Zied Bachoual",
     "Oumayma Kouni",
-    "Aziza-Jbeli",
-    "Mahjoub Kouni"
+
 ]
 # Initialize some variables
 face_locations = []
@@ -41,12 +36,10 @@ process_this_frame = True
 
 def Entrer(name):
     with open('Entree.csv', 'r+') as f :
-        # if anyone is already arrived man3awedch nsajlou
         myDataList = f.readlines()
         print(myDataList)
         nameList = []
         for line in myDataList:
-            # data separee par des ,
             entry = line.split(',')
             # nameList contains list of name which are before , entry[0]
             nameList.append(entry[0])
@@ -86,7 +79,6 @@ def gen_frames_Entrer():
             small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
             # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
             rgb_small_frame = small_frame[:, :, ::-1]
-            # Only process every other frame of video to save time
             # Find all the faces and face encodings in the current frame of video
             face_locations = face_recognition.face_locations(rgb_small_frame)
             face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
@@ -100,7 +92,6 @@ def gen_frames_Entrer():
                 best_match_index = np.argmin(face_distances)
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
-
                 face_names.append(name)
 
             # Display the results
